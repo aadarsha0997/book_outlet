@@ -1,3 +1,4 @@
+from tabnanny import verbose
 from typing import Any
 from django.db import models
 from django.core.validators import MinValueValidator,MaxValueValidator
@@ -9,6 +10,11 @@ class Adress(models.Model):
     street=models.CharField(max_length=50)
     postal_code=models.CharField(max_length=50)
     city=models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.street}{self.postal_code},{self.city}"
+    class Meta:
+        verbose_name_plural ="Address entity"
 
 class Author(models.Model):
     first_name=models.CharField(max_length=30)
